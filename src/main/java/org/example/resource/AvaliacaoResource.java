@@ -27,6 +27,38 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
     @Autowired //faz a injeção de dependência
     private AvaliacaoService avaliacaoService;
 
+    @GetMapping(
+            value = "/{id}", //http://localhost:8080/api/v1/avaliacao/1
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Operation(
+            summary = "Recupera um avaliacao baseado em um identificador",
+            description = "Método responsável para recuperar uma avaliacao no sistema baseado no identificador",
+            tags = {"avaliacao"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "405", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "407", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "403", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "415", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "501", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "502", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "503", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "504", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+
+            @ApiResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "303", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+
+    })
+
+
+    @Override
+    public Avaliacao get(@PathVariable("id") Integer id) {
+        return avaliacaoService.get(id);
+    }
+
     /**
      * Mètodo para criar T
      *
@@ -36,15 +68,26 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
     @PostMapping(
     )
     @Operation(
-            summary = "Cria um Avaliacao",
+            summary = "Cria uma Avaliacao",
             description = "Método responsável para criar uma avaliacao no sistema",
             tags = {"avaliacao"})
     @ApiResponses({
-            @ApiResponse(responseCode = "201", content = { @Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE) }),
-            @ApiResponse(responseCode = "303", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "304", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "405", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "407", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "403", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "415", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "501", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "502", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "503", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "504", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+
+            @ApiResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "303", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+    })
     @Override
 
     public Avaliacao create(@RequestBody Avaliacao entity) {
@@ -58,25 +101,6 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
         }
 
         return avaliacaoService.create(entity);
-    }
-
-    @GetMapping(
-            value = "/{id}", //http://localhost:8080/api/v1/avaliacao/1
-            produces = {MediaType.APPLICATION_JSON_VALUE})
-    @Operation(
-            summary = "Recupera um avaliacao baseado em um identificador",
-            description = "Método responsável para recuperar uma avaliacao no sistema baseado no identificador",
-            tags = {"avaliacao"})
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE) }),
-            @ApiResponse(responseCode = "303", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
-
-
-    @Override
-    public Avaliacao get(@PathVariable("id") Integer id) {
-        return avaliacaoService.get(id);
     }
 
 
@@ -93,10 +117,21 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
             description = "Método responsável para recuperar uma lista de avaliacõess",
             tags = {"avaliacao"})
     @ApiResponses({
-            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE) }),
-            @ApiResponse(responseCode = "303", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "405", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "407", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "403", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "415", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "501", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "502", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "503", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "504", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "304", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+    })
     @Override
     public List<Avaliacao> get() {
         return avaliacaoService.get();
@@ -119,10 +154,23 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
             description = "Método responsável para atualizar todos os dados de uma avaliacao.",
             tags = {"avaliacao"})
     @ApiResponses({
-            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE) }),
-            @ApiResponse(responseCode = "303", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "405", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "407", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "403", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "415", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "501", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "502", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "503", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "504", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "206", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "304", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "416", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)})
+    })
     @Override
     public Avaliacao update(@PathVariable Integer id, @RequestBody Avaliacao entity) {
         return avaliacaoService.update(id, entity);
@@ -139,10 +187,23 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
             description = "Método responsável para deletar uma avaliacao com base no identificador.",
             tags = {"avaliacao"})
     @ApiResponses({
-            @ApiResponse(responseCode = "206", content = { @Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE) }),
-            @ApiResponse(responseCode = "303", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "405", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "407", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "403", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "415", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "501", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "502", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "503", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "504", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "204", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "409", content = {@Content(schema = @Schema(implementation = Avaliacao.class), mediaType = MediaType.APPLICATION_JSON_VALUE)})
+    })
     @Override
     public void delete(@PathVariable Integer id) {
         avaliacaoService.delete(id);
