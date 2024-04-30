@@ -35,6 +35,13 @@ public class Avaliacao {
         this.frequencia = frequencia;
     }
 
+    public float calcularMedia() {
+        return (nota1 + nota2) / 2;
+    }
+
+    public boolean estaAprovado() {
+        return (calcularMedia() >= 6.0f) && (frequencia >= 40);
+    }
     public LocalDate getData() {
         return data;
     }

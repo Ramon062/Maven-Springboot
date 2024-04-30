@@ -46,14 +46,19 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
     @Override
-    public Avaliacao create(@RequestBody Avaliacao entity) {
 
-        log.info("Cadastro da avaliacao iniciado");
-        log.debug("Informações do avaliacao: {}", entity);
+    public Avaliacao create(@RequestBody Avaliacao entity) {
+        float media = entity.calcularMedia();
+        boolean aprovado = entity.estaAprovado();
+
+        if (aprovado) {
+            log.info("Aluno aprovado!");
+        } else {
+            log.info("Aluno reprovado!");
+        }
 
         return avaliacaoService.create(entity);
     }
-
 
     @GetMapping(
             value = "/{id}", //http://localhost:8080/api/v1/avaliacao/1
