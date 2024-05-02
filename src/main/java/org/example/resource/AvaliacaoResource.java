@@ -31,7 +31,7 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
             value = "/{id}", //http://localhost:8080/api/v1/avaliacao/1
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Operation(
-            summary = "Recupera um avaliacao baseado em um identificador",
+            summary = "Recupera uma avaliacao baseado em um identificador",
             description = "Método responsável para recuperar uma avaliacao no sistema baseado no identificador",
             tags = {"avaliacao"})
     @ApiResponses({
@@ -183,7 +183,7 @@ public class AvaliacaoResource implements IResource<Avaliacao, Integer> {
      */
     @DeleteMapping(value = "/{id}")
     @Operation(
-            summary = "Delete um avaliacao com base no identificador.",
+            summary = "Delete uma avaliacao com base no identificador.",
             description = "Método responsável para deletar uma avaliacao com base no identificador.",
             tags = {"avaliacao"})
     @ApiResponses({

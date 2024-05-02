@@ -1,6 +1,6 @@
 package org.example.service;
 
-
+import lombok.extern.slf4j.Slf4j;
 import org.example.interfaces.IService;
 import org.example.model.Aluno;
 import org.example.repository.AlunoRepository;
@@ -11,13 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-
-
+@Slf4j //nos ajuda a escrever log no projeto
 @Service //indica que é uma camada de serviço(negócio)
 public class AlunoService implements IService<Aluno, Integer> {
 
     @Autowired //injeção de dependência
-    private  AlunoRepository alunoRepository;
+    private AlunoRepository alunoRepository;
 
     /**
      * Mètodo para criar T
@@ -37,7 +36,7 @@ public class AlunoService implements IService<Aluno, Integer> {
      * @param id
      * @return
      */
- @Override
+    @Override
     public Aluno get(Integer id) {
         Optional<Aluno> alunoEncontrado = alunoRepository.findById(id);
         if(alunoEncontrado.isPresent()){

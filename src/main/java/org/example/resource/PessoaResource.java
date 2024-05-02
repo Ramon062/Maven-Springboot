@@ -38,8 +38,8 @@ public class PessoaResource implements IResource<Pessoa, Integer> {
     ) 
     ///
     @Operation(
-            summary = "Cria um pessoa",
-            description = "Método responsável para criar um pessoa no sistema",
+            summary = "Cria uma pessoa",
+            description = "Método responsável para criar uma pessoa no sistema",
             tags = {"pessoa"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Pessoa.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -62,25 +62,17 @@ public class PessoaResource implements IResource<Pessoa, Integer> {
     @Override
     public Pessoa create(@RequestBody Pessoa entity) {
 
-        log.info("Cadastro do pessoa iniciado");
-        log.debug("Informações do Pessoa: {}", entity);
+        log.info("Cadastro da pessoa iniciado");
+        log.debug("Informações da Pessoa: {}", entity);
 
         return pessoaService.create(entity);
     }
-    ///
-
-    /**
-     * Método para consultar T baseado no identificador N informado
-     *
-     * @param id
-     * @return
-     */
     @GetMapping(
             value = "/{id}", //http://localhost:8080/api/v1/pessoa/1
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Operation(
-            summary = "Recupera um pessoa baseado em um identificador",
-            description = "Método responsável para recuperar um pessoa no sistema baseado no identificador",
+            summary = "Recupera uma pessoa baseado em um identificador",
+            description = "Método responsável para recuperar uma pessoa no sistema baseado no identificador",
             tags = {"pessoa"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Pessoa.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -153,8 +145,8 @@ public class PessoaResource implements IResource<Pessoa, Integer> {
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     @Operation(
-            summary = "Atualiza todos os dados de um pessoa",
-            description = "Método responsável para atualizar todos os dados de um pessoa.",
+            summary = "Atualiza todos os dados de uma pessoa",
+            description = "Método responsável para atualizar todos os dados de uma pessoa.",
             tags = {"pessoa"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Pessoa.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -188,8 +180,8 @@ public class PessoaResource implements IResource<Pessoa, Integer> {
      */
     @DeleteMapping(value = "/{id}")
     @Operation(
-            summary = "Delete um pessoa com base no identificador.",
-            description = "Método responsável para deletar um pessoa com base no identificador.",
+            summary = "Delete uma pessoa com base no identificador.",
+            description = "Método responsável para deletar uma pessoa com base no identificador.",
             tags = {"pessoa"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Pessoa.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),

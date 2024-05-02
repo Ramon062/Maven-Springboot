@@ -24,12 +24,6 @@ public class TurmaResource implements IResource<Turma, Integer> {
     @Autowired //faz a injeção de dependência
     private TurmaService turmaService;
 
-    /**
-     * Método para criar T
-     *
-     * @param entity
-     * @return
-     */
     @PostMapping(
             consumes = {MediaType.APPLICATION_JSON_VALUE,
                         MediaType.APPLICATION_XML_VALUE},
@@ -60,24 +54,18 @@ public class TurmaResource implements IResource<Turma, Integer> {
     @Override
     public Turma create(@RequestBody Turma entity) {
 
-        log.info("Cadastro do turma iniciado");
-        log.debug("Informações do turma: {}", entity);
+        log.info("Cadastro da turma iniciado");
+        log.debug("Informações da turma: {}", entity);
 
         return turmaService.create(entity);
     }
 
-    /**
-     * Método para consultar T baseado no identificador N informado
-     *
-     * @param id
-     * @return
-     */
     @GetMapping(
             value = "/{id}", //http://localhost:8080/api/v1/turma/1
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Operation(
-            summary = "Recupera um turma baseado em um identificador",
-            description = "Método responsável para recuperar um turma no sistema baseado no identificador",
+            summary = "Recupera uma turma baseado em um identificador",
+            description = "Método responsável para recuperar uma turma no sistema baseado no identificador",
             tags = {"turma"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Turma.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -101,11 +89,6 @@ public class TurmaResource implements IResource<Turma, Integer> {
         return turmaService.get(id);
     }
 
-    /**
-     * Retorna uma lista de T
-     *
-     * @return
-     */
     @GetMapping(
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
@@ -134,21 +117,14 @@ public class TurmaResource implements IResource<Turma, Integer> {
         return turmaService.get();
     }
 
-    /**
-     * Iremos passar N(id) para buscar o registro e T(entity) para atualizar o objeto;
-     *
-     * @param id
-     * @param entity
-     * @return
-     */
     @PutMapping(
             value = "/{id}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     @Operation(
-            summary = "Atualiza todos os dados de um turma",
-            description = "Método responsável para atualizar todos os dados de um turma.",
+            summary = "Atualiza todos os dados de uma turma",
+            description = "Método responsável para atualizar todos os dados de uma turma.",
             tags = {"turma"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Turma.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -172,16 +148,10 @@ public class TurmaResource implements IResource<Turma, Integer> {
     public Turma update(@PathVariable Integer id, @RequestBody Turma entity) {
         return turmaService.update(id, entity);
     }
-
-    /**
-     * Deleta um registro com base no identificador N(id)
-     *
-     * @param id
-     */
     @DeleteMapping(value = "/{id}")
     @Operation(
-            summary = "Delete um turma com base no identificador.",
-            description = "Método responsável para deletar um turma com base no identificador.",
+            summary = "Delete uma turma com base no identificador.",
+            description = "Método responsável para deletar uma turma com base no identificador.",
             tags = {"turma"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Turma.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),

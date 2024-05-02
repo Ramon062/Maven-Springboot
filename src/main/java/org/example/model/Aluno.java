@@ -75,4 +75,7 @@ public class Aluno {
     public String getNome() {
         return null;
     }
+
+    public void setNome(String nome) {
+    }
 }

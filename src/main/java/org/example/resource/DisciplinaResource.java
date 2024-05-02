@@ -37,8 +37,8 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
     ) 
     ///
     @Operation(
-            summary = "Cria um disciplina",
-            description = "Método responsável para criar um disciplina no sistema",
+            summary = "Cria uma disciplina",
+            description = "Método responsável para criar uma disciplina no sistema",
             tags = {"disciplina"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Disciplina.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -61,8 +61,8 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
     @Override
     public Disciplina create(@RequestBody Disciplina entity) {
 
-        log.info("Cadastro do disciplina iniciado");
-        log.debug("Informações do disciplina: {}", entity);
+        log.info("Cadastro da disciplina iniciado");
+        log.debug("Informações da disciplina: {}", entity);
 
         return disciplinaService.create(entity);
     }
@@ -78,8 +78,8 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
             value = "/{id}", //http://localhost:8080/api/v1/disciplina/1
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @Operation(
-            summary = "Recupera um disciplina baseado em um identificador",
-            description = "Método responsável para recuperar um disciplina no sistema baseado no identificador",
+            summary = "Recupera ua disciplina baseado em um identificador",
+            description = "Método responsável para recuperar uma disciplina no sistema baseado no identificador",
             tags = {"disciplina"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Disciplina.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -152,8 +152,8 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     @Operation(
-            summary = "Atualiza todos os dados de um disciplina",
-            description = "Método responsável para atualizar todos os dados de um disciplina.",
+            summary = "Atualiza todos os dados de uma disciplina",
+            description = "Método responsável para atualizar todos os dados de uma disciplina.",
             tags = {"disciplina"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Disciplina.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
@@ -186,8 +186,8 @@ public class DisciplinaResource implements IResource<Disciplina, Integer> {
      */
     @DeleteMapping(value = "/{id}")
     @Operation(
-            summary = "Delete um disciplina com base no identificador.",
-            description = "Método responsável para deletar um disciplina com base no identificador.",
+            summary = "Delete uma disciplina com base no identificador.",
+            description = "Método responsável para deletar uma disciplina com base no identificador.",
             tags = {"disciplina"})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = Disciplina.class), mediaType = MediaType.APPLICATION_JSON_VALUE)}),
